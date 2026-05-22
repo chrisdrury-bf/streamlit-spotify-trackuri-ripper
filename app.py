@@ -5,6 +5,16 @@ import pandas as pd
 
 # Page Configuration
 st.set_page_config(page_title="Spotify Playlist Exporter", page_icon="🎵", layout="centered")
+
+# Hide Streamlit header, footer, and menu
+hide_streamlit_style = """
+<style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 st.title("🎵 Spotify Artist Track Downloader")
 st.write("Search for an artist, select your favorite tracks, and export them to a CSV.")
 
