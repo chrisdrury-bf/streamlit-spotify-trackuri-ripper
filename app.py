@@ -9,7 +9,7 @@ st.set_page_config(page_title="Spotify Playlist Exporter", page_icon="🎵", lay
 # Hide Streamlit header, footer, and menu, and inject custom fonts
 custom_css = """
 <style>
-@import url(https://db.onlinewebfonts.com/c/bac2610117740a492b7a9f5079c9aca4?family=Italian+Plate+No2+Expanded);
+@import url('https://db.onlinewebfonts.com/c/bac2610117740a492b7a9f5079c9aca4?family=Italian+Plate+No2+Expanded');
 
 @font-face {
     font-family: "Italian Plate No2 Expanded";
@@ -25,13 +25,13 @@ custom_css = """
 footer {visibility: hidden;}
 header {visibility: hidden;}
 
-html, body, [class*="css"] {
+html, body, [class*="css"], .stApp, .stApp * {
     font-family: 'Italian Plate No2 Expanded', sans-serif !important;
 }
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
-st.title("🎵 Spotify Artist Track Downloader")
+st.title("Spotify Artist Track Downloader")
 st.write("Search for an artist, select your favorite tracks, and export them to a CSV.")
 
 # Streamlit's secrets management
@@ -57,7 +57,7 @@ except Exception as e:
     st.stop()
 
 # --- STEP 1: ARTIST SEARCH ---
-search_query = st.text_input("Search for an artist:", placeholder="e.g., Daft Punk")
+search_query = st.text_input("Search for an artist:", value="Iron Maiden")
 
 if search_query:
     results = sp.search(q=search_query, type='artist', limit=5)
