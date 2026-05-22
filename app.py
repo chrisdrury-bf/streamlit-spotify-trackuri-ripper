@@ -6,15 +6,31 @@ import pandas as pd
 # Page Configuration
 st.set_page_config(page_title="Spotify Playlist Exporter", page_icon="🎵", layout="centered")
 
-# Hide Streamlit header, footer, and menu
-hide_streamlit_style = """
+# Hide Streamlit header, footer, and menu, and inject custom fonts
+custom_css = """
 <style>
+@import url(https://db.onlinewebfonts.com/c/bac2610117740a492b7a9f5079c9aca4?family=Italian+Plate+No2+Expanded);
+
+@font-face {
+    font-family: "Italian Plate No2 Expanded";
+    src: url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.eot");
+    src: url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/bac2610117740a492b7a9f5079c9aca4.svg#Italian Plate No2 Expanded")format("svg");
+}
+
 #MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 header {visibility: hidden;}
+
+html, body, [class*="css"] {
+    font-family: 'Italian Plate No2 Expanded', sans-serif !important;
+}
 </style>
 """
-st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+st.markdown(custom_css, unsafe_allow_html=True)
 st.title("🎵 Spotify Artist Track Downloader")
 st.write("Search for an artist, select your favorite tracks, and export them to a CSV.")
 
