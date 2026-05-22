@@ -31,6 +31,21 @@ html, body, [class*="css"], .stApp, .stApp * {
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
+
+# --- PASSWORD AUTHENTICATION ---
+if "authenticated" not in st.session_state:
+    st.session_state.authenticated = False
+
+if not st.session_state.authenticated:
+    st.title("Login Required")
+    pwd = st.text_input("Enter Password:", type="password")
+    if pwd == "pophouse":
+        st.session_state.authenticated = True
+        st.rerun()
+    elif pwd:
+        st.error("Incorrect password.")
+    st.stop()
+
 st.title("Spotify Artist Track Downloader")
 st.write("Search for an artist, select your favorite tracks, and export them to a CSV.")
 
